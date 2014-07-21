@@ -1,5 +1,5 @@
 FlashCardMNGer::Application.routes.draw do
  
-  root 'static_page#index'
+  root 'static_pages#index'
 
 end
