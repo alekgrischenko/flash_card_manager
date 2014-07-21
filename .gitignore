@@ -20,3 +20,5 @@
 *.sublime-workspace
 .rake_tasks~
 .idea/
+
+/config/database.yml
