@@ -2,23 +2,26 @@
 <html>
 <head>
   <title>Флэшкарточкер</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "bootstrap-theme", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "bootstrap",       media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "custom",          media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <section id="container">
+  <section class="container">
 
-    <header class="clearfix">
-      <h1>Флэшкарточкер</h1>
-      <ul class="navigation-links">
-        <li><a href="#">Все карточки</a></li>
-        <li><a href="#">Добавить карточку</a></li>
+    <header class="row page-header clearfix">
+      <h1 class="">Флэшкарточкер</h1>
+      <ul class="nav nav-pills navbar-right">
+        <li><a class="" href="#">Все карточки</a></li>
+        <li><a class="" href="#">Добавить карточку</a></li>
       </ul>
     </header>
-
-    <%= yield %>
-
+    
+    <section class="content">
+      <%= yield %>
+    </section>
+    
   </section>
 </body>
 
