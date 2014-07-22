@@ -1,0 +1,17 @@
+<h1>Listing cards</h1>
+ 
+<table align="center">
+  <tr>
+    <th>Original text</th>
+    <th>Translated text</th>
+    <th>Date review</th>
+  </tr>
+ 
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= card.review_date.try(:strftime, "%d/%m/%Y") %></td>
+    </tr>
+  <% end %>
+</table>
