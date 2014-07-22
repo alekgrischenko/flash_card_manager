@@ -10,10 +10,10 @@
   <section class="container">
 
     <header class="row page-header clearfix">
-      <h1 class="">Флэшкарточкер</h1>
-      <ul class="nav nav-pills navbar-right">
-        <li><a class="" href="#">Все карточки</a></li>
-        <li><a class="" href="#">Добавить карточку</a></li>
+      <h1><%= link_to 'Флэшкарточкер', root_path, class: "logo" %></h1>
+      <ul class="nav nav-pills navbar-right navi">
+        <li><%= link_to 'Все карточки', cards_path %></li>
+        <li><%= link_to 'Все карточки', "#" %></li>
       </ul>
     </header>
     

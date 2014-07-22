@@ -1,18 +1,31 @@
 .container {
   header {
-    background: #e5e5e5;
-    border-color: #000;
+    background: #B7B0B5;
+    border-bottom: 5px solid #727272;
     padding: 10px 10px 10px 10px;
     margin: 0;
     h1 {
       float: left;
       margin: 0;
     }
+  }
+}
+.logo { color: #555254;
+  &:hover{
+    color: #474548;
+    text-decoration: none;
+  }
+}
+.navi{
+  li{
     a {
+      text-transform: uppercase;
+      color: #fff;
       border: 1px solid transparent;
-      &:hover {
-        background-color: inherit;
-        border: 1px solid #2a6496;
+      &:hover, &:focus {
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid #555254;
       }
     }
   }
@@ -22,5 +35,21 @@
   text-align: center;
   .big-font {
     font-size: 22px;
+  }
+}
+
+table {
+  width: 700px;
+  margin-top: 50px;
+  tr {
+    td,th {
+      border: 1px solid #B7B0B5;
+    }
+    th {
+      background: #e5e5e5;
+      text-align: center;
+      height: 35px;
+      text-transform: uppercase;
+    }
   }
 }
