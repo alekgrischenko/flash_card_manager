@@ -21,4 +21,4 @@
 .rake_tasks~
 .idea/
 
-/config/*.yml
+/config/database.yml

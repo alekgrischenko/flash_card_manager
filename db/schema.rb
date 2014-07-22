@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140722005107) do
   create_table "cards", force: true do |t|
     t.string   "original_text"
     t.string   "translated_text"
-    t.date     "review_date"
+    t.datetime "review_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
