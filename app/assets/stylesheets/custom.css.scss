@@ -60,7 +60,7 @@ table {
 input {
   border: 1px solid #bbb;
   border-radius: 5px;
-  width: 40%;
+  width: 25%;
   height: 25px;
   margin-bottom: 15px;
 }
@@ -70,6 +70,7 @@ input[type="submit"] {
   height: 40px !important;
   background-color: #C7C1C1;
   border-color: #727272;
+  margin: 10px;
   &:hover, &:focus {
     background-color: #C7C1C1;
     border-color: #5D2C2C;
@@ -77,21 +78,7 @@ input[type="submit"] {
   }
 }
 
-#error_explanation {
-  color: #f00;
-  width: 60%;
-  margin: auto;
-  ul {
-    list-style: none;
-    margin: 0 0 15px 0;
-  }
-}
-.border-error {
-  border: 1px solid #FC0000;
-  border-radius: 20px;
-}
-    
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
+label {
+  display: block;
+  font-size: 20px;
 }
