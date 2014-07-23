@@ -1,0 +1,33 @@
+<%= form_for @card do |f| %>
+  <% if @card.errors.any? %>
+  <div id="error_explanation">
+    <div class="aler alert-error bg-danger border-error">
+      <h3><%= pluralize(@card.errors.count, "error") %> prohibited
+      this card from being saved:</h3>
+      <ul>
+      <% @card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :original_text, "Слово:" %><br>
+    <%= f.text_field :original_text %>
+  </p>
+ 
+  <p>
+    <%= f.label :translated_text, "Перевод:" %><br>
+    <%= f.text_field :translated_text %>
+  </p>
+  
+  <p>
+    <%= f.label :review_date, "Время пересмотра:" %><br>
+    <%= f.text_field :review_date %>
+  </p>
+
+  <p>
+    <%= f.submit "OK", class: "btn btn-large btn-primary" %>
+  </p>
+<% end %>

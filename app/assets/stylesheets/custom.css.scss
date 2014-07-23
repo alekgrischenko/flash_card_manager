@@ -10,12 +10,14 @@
     }
   }
 }
+
 .logo { color: #555254;
   &:hover{
     color: #474548;
     text-decoration: none;
   }
 }
+
 .navi{
   li{
     a {
@@ -52,4 +54,44 @@ table {
       text-transform: uppercase;
     }
   }
+}
+
+/* forms */
+input {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  width: 40%;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+input[type="submit"] {
+  width: 100px;
+  height: 40px !important;
+  background-color: #C7C1C1;
+  border-color: #727272;
+  &:hover, &:focus {
+    background-color: #C7C1C1;
+    border-color: #5D2C2C;
+    color: rgb(143, 136, 136);
+  }
+}
+
+#error_explanation {
+  color: #f00;
+  width: 60%;
+  margin: auto;
+  ul {
+    list-style: none;
+    margin: 0 0 15px 0;
+  }
+}
+.border-error {
+  border: 1px solid #FC0000;
+  border-radius: 20px;
+}
+    
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
 }

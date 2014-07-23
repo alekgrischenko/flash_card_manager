@@ -1,0 +1,19 @@
+<p>
+  <strong>Слово:</strong>
+  <%= @card.original_text %>
+</p>
+ 
+<p>
+  <strong>Перевод:</strong>
+  <%= @card.translated_text %>
+</p>
+
+<p>
+  <strong>Время пересмотра:</strong>
+  <%= @card.review_date %>
+</p>
+
+<%= link_to "Редактировать", edit_card_path(@card) %> 
+/ <%= link_to "Удалить", cards_path(@card), method: :delete,
+                         data: { confirm: 'Вы уверены, что хотите удалить безвозвратно эту флэш-карточку?' } %><br>
+<%= link_to 'Назад', cards_path %>
