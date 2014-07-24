@@ -1,10 +1,11 @@
-<h1>Listing cards</h1>
+<h1>Все карточки</h1>
  
 <table align="center">
   <tr>
-    <th>Original text</th>
-    <th>Translated text</th>
-    <th>Date review</th>
+    <th>Слово</th>
+    <th>Перевод</th>
+    <th>Дата пересмотра</th>
+    <th></th>
   </tr>
  
   <% @cards.each do |card| %>
@@ -12,6 +13,9 @@
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date.try(:strftime, "%d/%m/%Y") %></td>
+      <td><%= link_to "Показать", card_path(card) %><br><%= link_to "Редактировать", edit_card_path(card) %> / 
+      <%= link_to "Удалить", card_path(card), method: :delete,
+                             data: { confirm: 'Вы уверены, что хотите удалить безвозвратно эту флэш-карточку?' }  %></td>
     </tr>
   <% end %>
 </table>

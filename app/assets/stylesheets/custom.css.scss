@@ -2,7 +2,7 @@
   header {
     background: #B7B0B5;
     border-bottom: 5px solid #727272;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     margin: 0;
     h1 {
       float: left;
@@ -10,14 +10,17 @@
     }
   }
 }
-.logo { color: #555254;
-  &:hover{
+
+.logo { 
+  color: #555254;
+  &:hover {
     color: #474548;
     text-decoration: none;
   }
 }
-.navi{
-  li{
+
+.navi {
+  li {
     a {
       text-transform: uppercase;
       color: #fff;
@@ -52,4 +55,42 @@ table {
       text-transform: uppercase;
     }
   }
+}
+
+/* forms */
+input {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  width: 25%;
+  height: 32px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+input[type="submit"] {
+  width: 100px;
+  height: 40px !important;
+  background-color: #C7C1C1;
+  border-color: #727272;
+  margin: 10px;
+  &:hover, &:focus {
+    background-color: #C7C1C1;
+    border-color: #5D2C2C;
+    color: rgb(143, 136, 136);
+  }
+}
+
+label {
+  display: block;
+  font-size: 20px;
+}
+
+.error {
+  color: #f00;
+  border: 1px solid #FC0000;
+  border-radius: 5px;
+  background: #FCF8F2;
+  padding: 5px 10px;
+  margin-left: 30px;
+  position: absolute;
 }
