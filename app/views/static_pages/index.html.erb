@@ -1,3 +1,17 @@
 <p class="big-font">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
+
+<span class="original-text">
+  <% if @card != nil %>
+    <%= @card.original_text %>
+  <% else %>
+    <%= "Приходите завтра" %>
+  <% end %>
+</span>
+<%= form_tag(check_translation_path, method: "put") do %>
+    <%= label_tag(:translation, "Введите перевод:") %>
+    <%= text_field_tag(:translation) %>
+    <%= hidden_field_tag(:card_id, @card.id) %>
+    <%= submit_tag("Проверка") %>
+<% end %> 
