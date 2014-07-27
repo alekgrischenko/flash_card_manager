@@ -3,7 +3,6 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, presence: true 
   scope :pending_card, -> { where("review_date <= ? ", Time.now).order("RANDOM()") } 
 
-
   def check(translation)
     translation == translated_text
   end
