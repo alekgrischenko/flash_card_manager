@@ -4,14 +4,12 @@ class Card < ActiveRecord::Base
   scope :pending_card, -> { where("review_date <= ? ", Time.now).order("RANDOM()") } 
 
 
-  def check?(translation)
-    translation == self.translated_text
+  def check(translation)
+    translation == translated_text
   end
 
   def update_review_date
-    self.review_date = Time.now + 3.day
-    self.save
-    self.update_attribute(:review_date, (Time.now + 3.day))
+    update_attribute(:review_date, (Time.now + 3.day))
   end
 
 end
