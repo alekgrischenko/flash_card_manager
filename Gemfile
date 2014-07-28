@@ -10,6 +10,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'simple_form', '~> 3.0.2'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.2'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
