@@ -16,8 +16,8 @@ RSpec.describe Card, :type => :model do
 
 
   it "should update review_date" do
-    t = Time.now
-    allow(Time).to receive(:now){ t }
+    t = Time.parse("21/07/2013")
+    allow(Time).to receive(:now) { t }
     @card.update_review_date
     expect(@card.review_date).to eq (Time.now + 3.day)
   end
