@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Card, :type => :model do
+describe Card do
 
   before { @card = Card.new(original_text: "door", translated_text: "дверь", review_date: "25-07-2014") }
 
