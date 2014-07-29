@@ -14,7 +14,6 @@ describe Card do
     end
   end
 
-
   it "should update review_date" do
     t = Time.parse("21/07/2013")
     allow(Time).to receive(:now) { t }
