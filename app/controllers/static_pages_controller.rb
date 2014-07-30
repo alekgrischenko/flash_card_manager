@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def index
-    @card = Card.pending_card.first
+    @card = Card.pending.first
   end
   
 end
