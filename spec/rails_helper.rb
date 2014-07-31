@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'database_cleaner'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_driver = :poltergeist
@@ -17,4 +18,16 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.include Capybara::DSL
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

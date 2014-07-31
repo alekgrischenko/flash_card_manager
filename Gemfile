@@ -19,7 +19,7 @@ group :test do
   gem 'capybara', '~> 2.4.1'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'poltergeist', '~> 1.5.1'
-  gem 'database_cleaner', '~> 1.3.0'
+  gem 'database_cleaner', git: 'git@github.com:bmabey/database_cleaner.git'
 end
 
 
