@@ -6,7 +6,6 @@
   <div class="alert alert-<%= key %> msg"><%= value %></div>
 <% end %>
 
-<%= Card.pending.first.id.inspect %>
 <% if @card %>
   <span class="original-text">
     <%= @card.original_text %>
