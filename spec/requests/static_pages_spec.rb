@@ -7,7 +7,7 @@ describe "Static page" do
     describe "when review date less current" do
 
       before(:each) do 
-        FactoryGirl.create(:card)
+        FactoryGirl.create(:card, original_text: "text", translated_text: "текст", review_date: Time.now - 1.day )
         visit root_path
       end
      
@@ -30,7 +30,7 @@ describe "Static page" do
     end
 
     it "Home page warning when rewiew date more than today" do
-      FactoryGirl.create(:card, review_date:"#{Time.now+1.day}")
+      FactoryGirl.create(:card, review_date: Time.now+1.day )
       visit root_path
       expect(page).to have_content "Приходите завтра"
     end
