@@ -10,11 +10,11 @@
   <span class="original-text">
     <%= @card.original_text %>
   </span>
-  <%= form_tag(check_translation_path, method: "put") do %>
-    <%= label_tag(:translation, "Введите перевод:") %>
-    <%= text_field_tag(:translation) %>
-    <%= hidden_field_tag(:card_id, @card.id) %>
-    <%= submit_tag("Проверка") %>
+  <%= form_tag check_translation_path, method: "put" do %>
+    <%= label_tag :translation, "Введите перевод:" %>
+    <%= text_field_tag :translation %>
+    <%= hidden_field_tag :card_id, @card.id %>
+    <%= submit_tag "Проверка" %>
   <% end %> 
   
 <% else %>
