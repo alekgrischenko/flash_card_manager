@@ -1,0 +1,6 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input  :email,                 label: "Введите e-mail:" %>
+  <%= f.input  :password,              label: "Введите пароль:" %>
+  <%= f.input  :password_confirmation, label: "Подтвертиде пароль:" %>
+  <%= f.button :submit, "OK",    class: "btn btn-large btn-primary" %>
+<% end %>
