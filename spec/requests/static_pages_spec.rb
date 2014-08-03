@@ -4,7 +4,6 @@ describe "Static page" do
 
   describe "Home page" do
     let(:user) {FactoryGirl.create(:user)}
-    
 
     describe "when review date less current" do
 
