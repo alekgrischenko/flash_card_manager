@@ -11,13 +11,36 @@
 
     <header class="row page-header clearfix">
       <h1><%= link_to 'Флэшкарточкер', root_path, class: "logo" %></h1>
-      <ul class="nav nav-pills navbar-right navi">
-        <li><%= link_to 'Все карточки', cards_path %></li>
-        <li><%= link_to 'Добавить карточку', new_card_path %></li>
-      </ul>
+      <% if current_user %>
+        <ul class="nav nav-pills navbar-right navi">
+          <li><%= link_to 'Все карточки', cards_path %></li>
+          <li><%= link_to 'Добавить карточку', new_card_path %></li>
+        </ul>
+      <% else %>
+        <ul class="nav nav-pills navbar-right navi">
+          <li><%= link_to "Регистрация", new_user_path %></li>
+          <li><%= link_to "Войти", :login %></li>
+        </ul>
+      <% end %>
     </header>
+
+    <nav>
+      <% if current_user %>
+      <div>
+        <%= current_user.email %> |
+        <%= link_to "Редактировать", edit_user_path(current_user.id) %> |
+        <%= link_to "Выйти", :logout, method: :post %>
+      </div>
+      <% end %>
+    </nav>
     
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> msg"><%= value %></div>
+    <% end %>
+
     <section class="content">
+     
+      
       <%= yield %>
     </section>
     

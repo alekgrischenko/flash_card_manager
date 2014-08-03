@@ -15,6 +15,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.include Capybara::DSL
+  config.include Sorcery::TestHelpers::Rails
+
+  Capybara.javascript_driver = :poltergeist
+  Capybara.default_driver = :poltergeist
 
   config.before :suite do
     DatabaseCleaner.strategy = :transaction
@@ -36,8 +40,5 @@ RSpec.configure do |config|
   config.after do
     DatabaseCleaner.clean
   end
-
-  Capybara.javascript_driver = :poltergeist
-  Capybara.default_driver = :poltergeist
 
 end

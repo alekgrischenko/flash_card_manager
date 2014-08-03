@@ -3,15 +3,18 @@ require 'rails_helper'
 describe "Static page" do
 
   describe "Home page" do
+    let(:user) {FactoryGirl.create(:user)}
+    
 
     describe "when review date less current" do
 
       before(:each) do 
         FactoryGirl.create(:card, original_text: "text", translated_text: "текст", review_date: Time.now - 1.day )
-        visit root_path
+        sign_in user
       end
      
-      it { expect(page).to have_content "text" }
+      it { page.save_screenshot('tmp/capybara/page.png')
+        expect(page).to have_content "text" }
 
       describe "when input translation" do
 
@@ -29,10 +32,13 @@ describe "Static page" do
       end
     end
 
-    it "Home page warning when rewiew date more than today" do
-      FactoryGirl.create(:card, review_date: Time.now+1.day )
-      visit root_path
-      expect(page).to have_content "Приходите завтра"
+    describe "when rewiew date more than today" do
+      before(:each) do
+        FactoryGirl.create(:card, review_date: Time.now+1.day )
+        sign_in user
+      end
+
+      it { expect(page).to have_content "Приходите завтра" }
     end
   end
 end
