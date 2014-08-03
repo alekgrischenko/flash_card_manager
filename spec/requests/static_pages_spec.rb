@@ -13,8 +13,7 @@ describe "Static page" do
         sign_in user
       end
      
-      it { page.save_screenshot('tmp/capybara/page.png')
-        expect(page).to have_content "text" }
+      it { expect(page).to have_content "text" }
 
       describe "when input translation" do
 
@@ -34,7 +33,7 @@ describe "Static page" do
 
     describe "when rewiew date more than today" do
       before(:each) do
-        FactoryGirl.create(:card, review_date: Time.now+1.day )
+        FactoryGirl.create(:card, review_date: Time.now + 1.day )
         sign_in user
       end
 

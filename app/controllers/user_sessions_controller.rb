@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_back_or_to(:root, success: 'Logget out!')
+    redirect_back_or_to(:root, success: 'Logged out!')
   end
 
 end

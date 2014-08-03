@@ -6,6 +6,6 @@ FlashCardMNGer::Application.routes.draw do
   resources :user_sessions
   
   put 'check_translation',  to: 'review#check_translation'
-  get 'login',              to: 'user_sessions#new',     as: :login
-  post 'logout',            to: 'user_sessions#destroy', as: :logout
+  get 'login',              to: 'user_sessions#new'     
+  post 'logout',            to: 'user_sessions#destroy' 
 end

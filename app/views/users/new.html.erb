@@ -1,4 +1,7 @@
 <h1>Создать учетную запись</h1>
 
-<%= render 'form' %>
+<%= simple_form_for @user do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.button :submit, "Создать", class: "btn btn-large btn-primary" %>
+<% end %>
 <%= link_to 'Назад', root_path %>
