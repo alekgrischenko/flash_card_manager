@@ -1,0 +1,7 @@
+<h1>Редактировать учетную запись</h1>
+
+<%= simple_form_for current_user do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.button :submit, "Принять изменения", class: "btn btn-large btn-primary" %>
+<% end %>
+<%= link_to 'Назад', root_path %>

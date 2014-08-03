@@ -1,24 +1,20 @@
 <p class="big-font">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
-
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %> msg"><%= value %></div>
-<% end %>
-
-<% if @card %>
-  <span class="original-text">
-    <%= @card.original_text %>
-  </span>
-  <%= form_tag check_translation_path, method: "put" do %>
-    <%= label_tag :translation, "Введите перевод:" %>
-    <%= text_field_tag :translation %>
-    <%= hidden_field_tag :card_id, @card.id %>
-    <%= submit_tag "Проверка" %>
-  <% end %> 
-  
-<% else %>
-  <div class="alert alert-warning">
-    Приходите завтра
-  </div>
+<% if current_user %>
+  <% if @card %>
+    <span class="original-text">
+      <%= @card.original_text %>
+    </span>
+    <%= form_tag check_translation_path, method: :put do %>
+      <%= label_tag        :translation, "Введите перевод:" %>
+      <%= text_field_tag   :translation %>
+      <%= hidden_field_tag :card_id, @card.id %>
+      <%= submit_tag "Проверка" %>
+    <% end %> 
+  <% else %>
+    <div class="alert alert-warning">
+      Приходите завтра
+    </div>
+  <% end %>
 <% end %>
