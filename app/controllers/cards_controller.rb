@@ -3,15 +3,15 @@ class CardsController < ApplicationController
   before_action :card_source, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.all
+    @cards = current_user.cards.all
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
    
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.create(card_params)
    
     if @card.save
       redirect_to @card
@@ -49,7 +49,7 @@ class CardsController < ApplicationController
   end
 
   def card_source
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
   
 end

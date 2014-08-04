@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
 
   belongs_to :user
   validates :original_text, :translated_text, :user_id, presence: true 
-  scope :pending, -> { where("review_date <= ? ", Time.now).order("RANDOM()") } 
+  scope :pending, -> { where("review_date <= ?", Time.now).order("RANDOM()") } 
 
   def check(translation)
     translation == translated_text

@@ -68,7 +68,7 @@ input {
 }
 
 input[type="submit"] {
-  width: 100px;
+  width: auto;
   height: 40px !important;
   background-color: #C7C1C1;
   border-color: #727272;
@@ -108,3 +108,10 @@ label {
   font-size: 20px;
 }
 
+/* nav login */
+nav {
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  color: #B6AFB4 !important;
+}
