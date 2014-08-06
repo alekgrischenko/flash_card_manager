@@ -34,6 +34,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -123,6 +128,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rmagick (2.13.3)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -186,6 +192,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (~> 2.4.1)
+  carrierwave (~> 0.10.0)
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.2.0)
   factory_girl_rails (~> 4.4.1)
@@ -195,6 +202,7 @@ DEPENDENCIES
   poltergeist (~> 1.5.1)
   pry-debugger (~> 0.2.3)
   rails (= 4.0.2)
+  rmagick (~> 2.13.3)
   rspec-rails (~> 3.0.2)
   sass-rails (~> 4.0.0)
   sdoc

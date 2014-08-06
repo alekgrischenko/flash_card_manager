@@ -3,6 +3,7 @@
 </p>
 <% if current_user %>
   <% if @card %>
+    <div><%= image_tag @card.image_url if @card.image? %></div>
     <span class="original-text">
       <%= @card.original_text %>
     </span>
