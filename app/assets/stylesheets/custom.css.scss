@@ -80,6 +80,13 @@ input[type="submit"] {
   }
 }
 
+input[type="file"] {
+  border: medium none;
+  height: auto;
+  margin: 10px auto;
+  width: auto;
+}
+
 label {
   display: block;
   font-size: 20px;
