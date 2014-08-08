@@ -26,6 +26,9 @@ group :test do
   gem 'database_cleaner', '1.2.0'
 end
 
+group :production do
+  gem 'rails_12factor', '~> 0.0.2'
+end
 
 group :doc do
   gem 'sdoc', require: false
