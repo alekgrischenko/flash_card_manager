@@ -1,0 +1,16 @@
+default: &default
+aws_access_key_id: "AKIAIPUDN7FKW7BP4DDQ"
+aws_secret_access_key: "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"
+region: "eu-west-1"
+
+development:
+  <<: *default
+  bucket_name: "flash-card-images-dev"
+
+test:
+  <<: *default
+  database: "flash-card-images-test"
+
+production:
+  <<: *default
+  bucket_name: "flash-card-images-prod"

@@ -1,3 +1,4 @@
+#=begin
 require 'aws'
 CarrierWave.configure do |config|
   config.fog_credentials = {
@@ -9,3 +10,4 @@ CarrierWave.configure do |config|
   }               
   config.fog_directory  = FCManagerAWS.config['bucket_name']
 end
+#=end
