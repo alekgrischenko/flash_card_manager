@@ -1,17 +1,17 @@
-
-default: &default
+development:
   aws_access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
   aws_secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   region: <%= ENV["REGION"] %>
-
-development:
-  <<: *default
   bucket_name: "flash-card-images-dev"
 
 test:
-  <<: *default
+  aws_access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  aws_secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
+  region: <%= ENV["REGION"] %>
   database: "flash-card-images-test"
 
 production:
-  <<: *default
+  aws_access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  aws_secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
+  region: <%= ENV["REGION"] %>
   bucket_name: "flash-card-images-prod"
