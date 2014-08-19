@@ -20,5 +20,4 @@ describe Card do
     @card.update_review_date
     expect(@card.review_date).to eq (Time.now + 3.day)
   end
-
 end
