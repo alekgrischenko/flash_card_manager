@@ -37,27 +37,28 @@
       a:hover { color: #555254; }
     } 
   }
-  
 }
-.sub-menu {
-    position: absolute;
-    top: 42px;
-    right: 0px;
-    background-color: #b7b0b5 - #111;
-    border: 1px solid #555254 + #111;
-    border-radius: 4px;
-    display: none;
-    text-align: center;
-    white-space: nowrap;
-  }  
 
+.sub-menu {
+  position: absolute;
+  top: 42px;
+  right: 0px;
+  background-color: #b7b0b5 - #111;
+  border: 1px solid #555254 + #111;
+  border-radius: 4px;
+  display: none;
+  text-align: center;
+  white-space: nowrap;
+}  
 
 .content {
   padding-top: 20px;
   text-align: center;
-  .big-font {
-    font-size: 22px;
-  }
+  .big-font { font-size: 22px; }
+}
+
+.deck-title {
+  color: #b7b0b5;
 }
 
 table {

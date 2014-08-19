@@ -4,6 +4,7 @@
 <% if current_user %>
   <% if current_user.cards.first %>
     <% if @card %>
+      <h1 class="deck-title"><%= current_user.current_deck.title if current_user.current_deck_id %></h1>
       <div><%= image_tag @card.image_url if @card.image? %></div>
       <span class="original-text">
         <%= @card.original_text %>
@@ -19,11 +20,11 @@
         На сегодня все карточки закончились. Приходите завтра.
       </div>
     <% end %>
-  <% elsif current_user.decks.first == nil %>
+  <% elsif current_user.decks.empty? %>
     <div class="alert alert-warning">
       Необходимо создать колоду и добавить туда карточки.
     </div>
-  <% else #if !current_user.cards.first %>
+  <% else %>
     <div class="alert alert-warning">
       Необходимо добавить карточки в колоду.
     </div>

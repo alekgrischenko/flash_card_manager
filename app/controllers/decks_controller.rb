@@ -3,7 +3,7 @@ class DecksController < ApplicationController
   before_action :find_deck, only: [:show, :edit, :update, :destroy]
 
   def index
-    @decks = current_user.decks.all
+    @decks = current_user.decks
   end
 
   def new
@@ -11,13 +11,14 @@ class DecksController < ApplicationController
   end
 
   def show
+    redirect_to deck_cards_path(@deck)
   end
 
   def create
     @deck = current_user.decks.create(deck_params)
 
     if @deck.save
-      redirect_to decks_path(current_user.id)
+      redirect_to decks_path(current_user)
     else
       render 'new'
     end
@@ -36,8 +37,9 @@ class DecksController < ApplicationController
 
   def destroy
     @deck.destroy
+    current_user.update_attribute(:current_deck_id, nil)
 
-    redirect_to decks_path(current_user.id)
+    redirect_to decks_path(current_user)
   end
 
   private

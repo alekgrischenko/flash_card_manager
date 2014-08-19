@@ -1,5 +1,6 @@
 <h1>Все карточки</h1>
- 
+<h1>колода <span class="deck-title"><%= @deck.title %></span></h1>
+
 <%= render "cards" %> 
 
 <div><%= link_to "Добавить карточку", new_deck_card_path(params[:deck_id]) %></div>

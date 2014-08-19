@@ -11,8 +11,7 @@
       <td><%= deck.title %></td>
       <td>
         <div>
-          <%= link_to "Добавить карточку", new_deck_card_path(deck.id)%> /
-          <%= link_to "Показать карточки", deck_cards_path(deck.id)%>
+          <%= link_to "Добавить карточку", new_deck_card_path(deck)%>
         </div>
         <div>
           <%= link_to "Показать", deck_path(deck) %> /

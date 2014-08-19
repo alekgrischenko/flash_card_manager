@@ -10,7 +10,7 @@ FactoryGirl.define do
     f.after(:create) do 
       |deck| 5.times do
         deck.cards << FactoryGirl.create(:card, original_text: "text", translated_text: "текст",
-                         review_date: Time.now - 1.day, user_id: deck.user_id, deck_id: deck.id)
+                                                review_date: Time.now - 1.day, user_id: deck.user_id, deck_id: deck.id)
       end
     end
   end

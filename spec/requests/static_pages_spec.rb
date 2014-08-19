@@ -76,15 +76,16 @@ describe "Static page" do
     end
 
     describe "when user login and have several decks and cards" do
-      let(:user) { FactoryGirl.create(:user, current_deck_id: '1') }
+      let(:user) { FactoryGirl.create(:user) }
       
       before(:each) do
         sign_in user
         5.times { FactoryGirl.create(:deck_with_cards) }
+        user.update_attribute(:current_deck_id, user.decks.sample.id)
         visit root_path
       end
-      
-      it { expect(user.current_deck.cards.pending.first.deck_id).to eq user.current_deck_id }
+
+      it { expect(user.pending_cards.first.deck_id).to eq user.current_deck_id }
     end
   end
 end
