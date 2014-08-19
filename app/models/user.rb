@@ -5,5 +5,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true 
   validates :email, uniqueness: true 
 
-  has_many :cards
+  has_many :cards, dependent: :destroy
+  has_many :decks, dependent: :destroy
+  belongs_to :current_deck, class_name: "Deck", foreign_key: "current_deck_id"
+
 end

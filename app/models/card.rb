@@ -1,8 +1,9 @@
 class Card < ActiveRecord::Base
 
   belongs_to :user
+  belongs_to :deck
 
-  validates :original_text, :translated_text, :user_id, presence: true 
+  validates :original_text, :translated_text, :user_id, :deck_id, presence: true 
   
   scope :pending, -> { where("review_date <= ?", Time.now).order("RANDOM()") } 
   

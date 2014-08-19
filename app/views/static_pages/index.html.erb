@@ -2,20 +2,30 @@
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
 <% if current_user %>
-  <% if @card %>
-    <div><%= image_tag @card.image_url if @card.image? %></div>
-    <span class="original-text">
-      <%= @card.original_text %>
-    </span>
-    <%= form_tag check_translation_path, method: :put do %>
-      <%= label_tag        :translation, "Введите перевод:" %>
-      <%= text_field_tag   :translation %>
-      <%= hidden_field_tag :card_id, @card.id %>
-      <%= submit_tag "Проверка" %>
-    <% end %> 
-  <% else %>
+  <% if current_user.cards.first %>
+    <% if @card %>
+      <div><%= image_tag @card.image_url if @card.image? %></div>
+      <span class="original-text">
+        <%= @card.original_text %>
+      </span>
+      <%= form_tag check_translation_path, method: :put do %>
+        <%= label_tag        :translation, "Введите перевод:" %>
+        <%= text_field_tag   :translation %>
+        <%= hidden_field_tag :card_id, @card.id %>
+        <%= submit_tag "Проверка" %>
+      <% end %> 
+    <% else %>
+      <div class="alert alert-warning">
+        На сегодня все карточки закончились. Приходите завтра.
+      </div>
+    <% end %>
+  <% elsif current_user.decks.first == nil %>
     <div class="alert alert-warning">
-      Приходите завтра
+      Необходимо создать колоду и добавить туда карточки.
+    </div>
+  <% else #if !current_user.cards.first %>
+    <div class="alert alert-warning">
+      Необходимо добавить карточки в колоду.
     </div>
   <% end %>
 <% end %>

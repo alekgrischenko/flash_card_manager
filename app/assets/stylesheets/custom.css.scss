@@ -20,19 +20,38 @@
 }
 
 .navi {
-  li {
+  li { 
+    position: relative;
     a {
       text-transform: uppercase;
       color: #fff;
       border: 1px solid transparent;
       &:hover, &:focus {
-        color: #fff;
         background-color: transparent;
         border: 1px solid #555254;
       }
     }
+    &:hover .sub-menu {
+      display: block;
+      border: 1px solid #555254;
+      a:hover { color: #555254; }
+    } 
   }
+  
 }
+.sub-menu {
+    position: absolute;
+    top: 42px;
+    right: 0px;
+    background-color: #b7b0b5 - #111;
+    border: 1px solid #555254 + #111;
+    border-radius: 4px;
+    display: none;
+    text-align: center;
+    white-space: nowrap;
+  }  
+
+
 .content {
   padding-top: 20px;
   text-align: center;

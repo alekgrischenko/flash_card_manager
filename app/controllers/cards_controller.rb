@@ -1,17 +1,18 @@
 class CardsController < ApplicationController
 
-  before_action :card_source, only: [:show, :edit, :update, :destroy]
+  before_action :find_card, only: [:show, :edit, :update, :destroy]
+  before_action :find_deck, only: [:index, :new, :create]
 
   def index
-    @cards = current_user.cards.all
+    @cards = @deck.cards
   end
 
   def new
-    @card = current_user.cards.new
+    @card = @deck.cards.new
   end
    
   def create
-    @card = current_user.cards.create(card_params)
+    @card = @deck.cards.create(card_params.merge(user_id: current_user.id))
    
     if @card.save
       redirect_to @card
@@ -39,7 +40,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     
-    redirect_to cards_path    
+    redirect_to deck_cards_path(@card.deck_id)    
   end
    
   private
@@ -48,8 +49,12 @@ class CardsController < ApplicationController
     params.require(:card).permit(:original_text, :translated_text, :review_date, :image)
   end
 
-  def card_source
+  def find_card
     @card = current_user.cards.find(params[:id])
   end
-  
+
+  def find_deck
+    @deck = current_user.decks.find(params[:deck_id])
+  end
+
 end
