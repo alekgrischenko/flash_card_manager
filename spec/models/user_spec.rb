@@ -11,6 +11,6 @@ describe User do
       user.update_attribute(:current_deck_id, user.decks.sample.id)
     end
 
-    it { expect(user.pending_cards.first.deck_id).to eq user.current_deck_id }
+    it { expect(user.pending_cards.sample.deck_id).to eq user.current_deck_id }
   end
 end

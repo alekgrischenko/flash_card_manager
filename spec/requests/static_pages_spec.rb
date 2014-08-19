@@ -85,7 +85,6 @@ describe "Static page" do
         visit root_path
       end
 
-      it { expect(user.pending_cards.first.deck_id).to eq user.current_deck_id }
       it { expect(page).to have_content user.current_deck.title }
     end
   end
