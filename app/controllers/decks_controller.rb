@@ -36,8 +36,8 @@ class DecksController < ApplicationController
   end
 
   def destroy
+    current_user.update_attribute(:current_deck_id, nil) if @deck.id == current_user.current_deck_id 
     @deck.destroy
-    current_user.update_attribute(:current_deck_id, nil)
 
     redirect_to decks_path(current_user)
   end

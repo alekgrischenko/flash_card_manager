@@ -64,7 +64,7 @@ describe "Static page" do
               click_button "Проверка"
               expect(page).to have_content "Не правильно"
             end
-
+           
             it "message when translate right" do
               fill_in 'translation', with: "текст"
               click_button "Проверка"
