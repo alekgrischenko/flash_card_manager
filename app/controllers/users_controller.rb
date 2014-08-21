@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
    
     if @user.save
-      redirect_back_or_to(root_path, success: 'User was successfully created')
+      auto_login(@user)
+      redirect_back_or_to(new_deck_path, success: 'User was successfully created')
     else
       render 'new'
     end
@@ -27,6 +28,11 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def set_current_deck
+    current_user.update_attribute(:current_deck_id, params[:id])
+    redirect_back_or_to(decks_path, success: 'Current deck set')
   end
 
   private

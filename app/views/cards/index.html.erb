@@ -1,23 +1,7 @@
 <h1>Все карточки</h1>
- 
-<table align="center">
-  <tr>
-    <th>Слово</th>
-    <th>Перевод</th>
-    <th>Дата пересмотра</th>
-    <th>Изображение</th>
-    <th></th>
-  </tr>
-  <% @cards.each do |card| %>
-    <tr>
-      <td><%= card.original_text %></td>
-      <td><%= card.translated_text %></td>
-      <td><%= card.review_date.try(:strftime, "%d/%m/%Y") %></td>
-      <td><%= image_tag card.image_url(:thumb) if card.image? %></td>
-      <td>
-        <%= link_to "Показать", card_path(card) %><br><%= link_to "Редактировать", edit_card_path(card) %> / 
-        <%= link_to "Удалить", card_path(card), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить безвозвратно эту флэш-карточку?' }  %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<h1>колода <span class="deck-title"><%= @deck.title %></span></h1>
+
+<%= render "cards" %> 
+
+<div><%= link_to "Добавить карточку", new_deck_card_path(params[:deck_id]) %></div>
+<div><%= link_to "Назад к колодам", decks_path %></div>

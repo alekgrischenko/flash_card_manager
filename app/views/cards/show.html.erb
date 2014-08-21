@@ -19,4 +19,4 @@
 
 <%= link_to "Редактировать", edit_card_path(@card) %>/ 
 <%= link_to "Удалить", card_path(@card), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить безвозвратно эту флэш-карточку?' } %><br>
-<%= link_to 'Назад', cards_path %>
+<%= link_to 'Назад', deck_cards_path(@card.deck_id) %>

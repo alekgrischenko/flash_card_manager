@@ -1,0 +1,25 @@
+<h1>Все колоды</h1>
+ 
+<table align="center">
+  <tr>
+    <th>Колода</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @decks.each do |deck| %>
+    <tr>
+      <td><%= deck.title %></td>
+      <td>
+        <div>
+          <%= link_to "Добавить карточку", new_deck_card_path(deck)%>
+        </div>
+        <div>
+          <%= link_to "Показать", deck_path(deck) %> /
+          <%= link_to "Редактировать", edit_deck_path(deck) %> / 
+          <%= link_to "Удалить", deck_path(deck), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить безвозвратно эту колоду? Если вы нажмете ОК, то все флэш-карточки, содержащиеся в этой колоде, будут удалены' }  %>
+        </div>
+      </td>
+      <td><%= link_to "Сделать текущей", set_current_deck_user_path(deck), method: :put %></td>
+    </tr>
+  <% end %>
+</table>
