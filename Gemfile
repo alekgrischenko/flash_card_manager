@@ -28,6 +28,7 @@ end
 
 group :production do
   gem 'rails_12factor', '~> 0.0.2'
+  gem 'sprockets_better_errors', '~> 0.0.5'
 end
 
 group :doc do
