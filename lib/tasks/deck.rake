@@ -10,5 +10,4 @@ namespace :deck do
       end
     end
   end
-
 end
