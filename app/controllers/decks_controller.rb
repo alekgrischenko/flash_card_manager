@@ -18,7 +18,7 @@ class DecksController < ApplicationController
     @deck = current_user.decks.create(deck_params)
 
     if @deck.save
-      redirect_to decks_path(current_user)
+      redirect_to decks_path
     else
       render 'new'
     end
@@ -38,7 +38,7 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
 
-    redirect_to decks_path(current_user)
+    redirect_to decks_path
   end
 
   private
