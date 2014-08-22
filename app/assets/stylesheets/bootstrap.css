@@ -4661,6 +4661,8 @@ a.thumbnail.active {
 .alert-info .alert-link {
   color: #245269;
 }
+
+/* alert-notice */
 .alert-warning, .alert-notice {
   color: #8a6d3b;
   background-color: #fcf8e3;
