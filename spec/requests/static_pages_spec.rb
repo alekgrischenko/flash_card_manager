@@ -22,7 +22,7 @@ describe "Static page" do
       
       it { expect(page).to have_link("Редактировать", href: edit_user_path(user.id)) }
       it { expect(page).to have_link("Выйти",         href: logout_path) }
-      it { expect(page).to have_link("Колоды",        href: decks_path(user.id)) }
+      it { expect(page).to have_link("Колоды",        href: decks_path) }
       it { expect(page).to have_content user.email }
 
       describe "when user have not decks and cards" do
