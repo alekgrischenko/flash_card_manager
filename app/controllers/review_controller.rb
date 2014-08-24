@@ -3,9 +3,10 @@ class ReviewController < ApplicationController
   def check_translation
     card = Card.find(params[:card_id])
     if card.check(params[:translation])
-      card.update_review_date
+      card.correct_answer
       flash[:success] = "Правильно"
     else
+      card.incorrect_answer
       flash[:danger] = "Не правильно"
     end
     redirect_to root_path
