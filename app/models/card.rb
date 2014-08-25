@@ -10,35 +10,26 @@ class Card < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def check(translation)
-    translation == translated_text ? correct_answer : incorrect_answer
-  end
-
-  def update_review_date
-    case numb_correct_answers
-    when 0 
-      update_attribute(:review_date, Time.now)
-    when 1
-      update_attribute(:review_date, (Time.now + 12.hour))
-    when 2
-      update_attribute(:review_date, (Time.now + 3.day))
-    when 3
-      update_attribute(:review_date, (Time.now + 1.week)) 
-    when 4
-      update_attribute(:review_date, (Time.now + 2.week)) 
+    if translation == translated_text 
+      process_correct_answer
+      return true
     else
-      update_attribute(:numb_correct_answers, 5)
-      update_attribute(:review_date, (Time.now + 1.month))
+      process_incorrect_answer
+      return false
     end
   end
 
-  def correct_answer
+  def update_review_date
+    update_attribute(:review_date, calc_till_review_time(numb_correct_answers))
+  end
+
+  def process_correct_answer
     increment(:numb_correct_answers)
     update_attribute(:numb_incorrect_answers, 0)
     update_review_date
-    return true
   end
 
-  def incorrect_answer
+  def process_incorrect_answer
     if numb_incorrect_answers < 3
       increment(:numb_incorrect_answers)
     else
@@ -46,7 +37,24 @@ class Card < ActiveRecord::Base
       update_attribute(:numb_incorrect_answers, 0)
       update_review_date
     end
-    return false
+  end
+
+  def calc_till_review_time(numb_correct_answers)
+    case numb_correct_answers
+    when 0 
+      Time.now
+    when 1
+      Time.now + 12.hour
+    when 2
+      Time.now + 3.day
+    when 3
+      Time.now + 1.week 
+    when 4
+      Time.now + 2.week 
+    else
+      update_attribute(:numb_correct_answers, 5)
+      Time.now + 1.month
+    end
   end
 
 end
