@@ -13,6 +13,7 @@ class CardsController < ApplicationController
    
   def create
     @card = @deck.cards.create(card_params.merge(user_id: current_user.id))
+    @card.update_attribute(:review_date, Time.now)
    
     if @card.save
       redirect_to @card

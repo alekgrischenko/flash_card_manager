@@ -10,11 +10,11 @@ class Card < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def check(translation)
-    translation == translated_text
+    translation == translated_text ? correct_answer : incorrect_answer
   end
 
   def update_review_date
-    case numb_correct_answers.to_i
+    case numb_correct_answers
     when 0 
       update_attribute(:review_date, Time.now)
     when 1
@@ -25,25 +25,28 @@ class Card < ActiveRecord::Base
       update_attribute(:review_date, (Time.now + 1.week)) 
     when 4
       update_attribute(:review_date, (Time.now + 2.week)) 
-    when 5
+    else
+      update_attribute(:numb_correct_answers, 5)
       update_attribute(:review_date, (Time.now + 1.month))
     end
   end
 
   def correct_answer
-    increment(:numb_correct_answers, 1) if numb_correct_answers.to_i < 5
-    update_attribute(:numb_incorrect_answers, nil)
+    increment(:numb_correct_answers)
+    update_attribute(:numb_incorrect_answers, 0)
     update_review_date
+    return true
   end
 
   def incorrect_answer
-    if numb_incorrect_answers.to_i < 3
-      increment(:numb_incorrect_answers, 1)
+    if numb_incorrect_answers < 3
+      increment(:numb_incorrect_answers)
     else
-      decrement(:numb_correct_answers, 1) if numb_correct_answers.to_i > 0
-      update_attribute(:numb_incorrect_answers, nil)
+      decrement(:numb_correct_answers) if numb_correct_answers > 0
+      update_attribute(:numb_incorrect_answers, 0)
       update_review_date
     end
+    return false
   end
 
 end
