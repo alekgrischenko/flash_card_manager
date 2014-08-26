@@ -1,8 +1,6 @@
 <%= simple_form_for [@deck, @card] do |f| %>
   <%= f.input  :original_text,   label: "Слово:" %>
   <%= f.input  :translated_text, label: "Перевод:" %>
-  <%= f.input  :review_date,     label: "Время пересмотра:", as: :string %>
   <%= f.input  :image,           label: "Изображение:" %>
   <%= f.button :submit, "OK",    class: "btn btn-large btn-primary" %>
 <% end %>
-

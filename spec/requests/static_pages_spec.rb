@@ -39,9 +39,10 @@ describe "Static page" do
         it { expect(page).to have_content "Необходимо добавить карточки в колоду." }
 
         describe "user have decks and cards and review date more then today" do
-          let!(:card) { FactoryGirl.create(:card, user_id: user.id, deck_id: deck.id, review_date: Time.now + 1.day) }
+          let!(:card) { FactoryGirl.create(:card, user_id: user.id, deck_id: deck.id)  }
 
           before(:each) do
+            card.update_attributes(review_date: (Time.now + 1.day))
             visit root_path
           end
         
@@ -49,7 +50,7 @@ describe "Static page" do
         end
 
         describe "user have decks and cards and review date less then today" do
-          let!(:card) { FactoryGirl.create(:card, original_text: "text", translated_text: "текст", user_id: user.id, deck_id: deck.id, review_date: Time.now - 1.day) }
+          let!(:card) { FactoryGirl.create(:card, original_text: "text", translated_text: "текст", user_id: user.id, deck_id: deck.id) }
 
           before(:each) do
             visit root_path
