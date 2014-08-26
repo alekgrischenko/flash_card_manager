@@ -9,6 +9,8 @@ class Card < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
+  before_create :set_default_review_date
+
   def check(translation)
     if translation == translated_text 
       process_correct_answer
@@ -20,7 +22,7 @@ class Card < ActiveRecord::Base
   end
 
   def update_review_date
-    update_attribute(:review_date, calc_till_review_time(numb_correct_answers))
+    update_attribute(:review_date, calc_time_till_review)
   end
 
   def process_correct_answer
@@ -39,7 +41,7 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def calc_till_review_time(numb_correct_answers)
+  def calc_time_till_review
     case numb_correct_answers
     when 0 
       Time.now
@@ -57,4 +59,8 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def set_default_review_date
+    self.review_date = Time.now
+  end
+  
 end
