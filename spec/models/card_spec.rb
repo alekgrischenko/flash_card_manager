@@ -38,8 +38,6 @@ describe Card do
         describe "number incorrect answer eq 0" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 0, numb_incorrect_answers: 0) }
           
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-          
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 0 }
           it { expect(card.numb_incorrect_answers).to eq 1 }
@@ -47,8 +45,6 @@ describe Card do
 
         describe "number incorrect answer eq 1" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 0, numb_incorrect_answers: 1) }
-           
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
                  
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 0 }
@@ -58,8 +54,6 @@ describe Card do
         describe "number incorrect answer eq 2" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 0, numb_incorrect_answers: 2) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 0 }
           it { expect(card.numb_incorrect_answers).to eq 3 }
@@ -68,8 +62,6 @@ describe Card do
         describe "number incorrect answer eq 3" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 0, numb_incorrect_answers: 3) }
           
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.now }
           it { expect(card.numb_correct_answers).to eq 0 }
           it { expect(card.numb_incorrect_answers).to eq 0 }
@@ -96,8 +88,6 @@ describe Card do
         describe "number incorrect answer eq 0" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 1, numb_incorrect_answers: 0) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 1 }
           it { expect(card.numb_incorrect_answers).to eq 1 }
@@ -106,8 +96,6 @@ describe Card do
         describe "number incorrect answer eq 1" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 1, numb_incorrect_answers: 1) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-                 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 1 }
           it { expect(card.numb_incorrect_answers).to eq 2 }
@@ -115,8 +103,6 @@ describe Card do
 
         describe "number incorrect answer eq 2" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 1, numb_incorrect_answers: 2) }
-
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 1 }
@@ -126,8 +112,6 @@ describe Card do
         describe "number incorrect answer eq 3" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 1, numb_incorrect_answers: 3) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-          
           it { expect(card.review_date).to eq Time.now }
           it { expect(card.numb_correct_answers).to eq 0 }
           it { expect(card.numb_incorrect_answers).to eq 0 }
@@ -154,8 +138,6 @@ describe Card do
         describe "number incorrect answer eq 0" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 2, numb_incorrect_answers: 0) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 2 }
           it { expect(card.numb_incorrect_answers).to eq 1 }
@@ -164,8 +146,6 @@ describe Card do
         describe "number incorrect answer eq 1" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 2, numb_incorrect_answers: 1) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-                 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 2 }
           it { expect(card.numb_incorrect_answers).to eq 2 }
@@ -173,8 +153,6 @@ describe Card do
 
         describe "number incorrect answer eq 2" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 2, numb_incorrect_answers: 2) }
-
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 2 }
@@ -184,8 +162,6 @@ describe Card do
         describe "number incorrect answer eq 3" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 2, numb_incorrect_answers: 3) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-          
           it { expect(card.review_date).to eq (Time.now + 12.hour) }
           it { expect(card.numb_correct_answers).to eq 1 }
           it { expect(card.numb_incorrect_answers).to eq 0 }
@@ -212,8 +188,6 @@ describe Card do
         describe "number incorrect answer eq 0" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 3, numb_incorrect_answers: 0) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 3 }
           it { expect(card.numb_incorrect_answers).to eq 1 }
@@ -222,8 +196,6 @@ describe Card do
         describe "number incorrect answer eq 1" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 3, numb_incorrect_answers: 1) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-                 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 3 }
           it { expect(card.numb_incorrect_answers).to eq 2 }
@@ -231,8 +203,6 @@ describe Card do
 
         describe "number incorrect answer eq 2" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 3, numb_incorrect_answers: 2) }
-
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 3 }
@@ -242,8 +212,6 @@ describe Card do
         describe "number incorrect answer eq 3" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 3, numb_incorrect_answers: 3) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-          
           it { expect(card.review_date).to eq (Time.now + 3.day) }
           it { expect(card.numb_correct_answers).to eq 2 }
           it { expect(card.numb_incorrect_answers).to eq 0 }
@@ -270,8 +238,6 @@ describe Card do
         describe "number incorrect answer eq 0" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 4, numb_incorrect_answers: 0) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 4 }
           it { expect(card.numb_incorrect_answers).to eq 1 }
@@ -280,8 +246,6 @@ describe Card do
         describe "number incorrect answer eq 1" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 4, numb_incorrect_answers: 1) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-                
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 4 }
           it { expect(card.numb_incorrect_answers).to eq 2 }
@@ -289,8 +253,6 @@ describe Card do
 
         describe "number incorrect answer eq 2" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 4, numb_incorrect_answers: 2) }
-
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 4 }
@@ -300,8 +262,6 @@ describe Card do
         describe "number incorrect answer eq 3" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 4, numb_incorrect_answers: 3) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-          
           it { expect(card.review_date).to eq (Time.now + 1.week) }
           it { expect(card.numb_correct_answers).to eq 3 }
           it { expect(card.numb_incorrect_answers).to eq 0 }
@@ -328,8 +288,6 @@ describe Card do
         describe "number incorrect answer eq 0" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 5, numb_incorrect_answers: 0) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 5 }
           it { expect(card.numb_incorrect_answers).to eq 1 }
@@ -338,8 +296,6 @@ describe Card do
         describe "number incorrect answer eq 1" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 5, numb_incorrect_answers: 1) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-                 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 5 }
           it { expect(card.numb_incorrect_answers).to eq 2 }
@@ -347,8 +303,6 @@ describe Card do
 
         describe "number incorrect answer eq 2" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 5, numb_incorrect_answers: 2) }
-
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
 
           it { expect(card.review_date).to eq Time.parse("21-07-2014") }
           it { expect(card.numb_correct_answers).to eq 5 }
@@ -358,8 +312,6 @@ describe Card do
         describe "number incorrect answer eq 3" do
           let(:card) { FactoryGirl.create(:card, numb_correct_answers: 5, numb_incorrect_answers: 3) }
 
-          #before(:each) { card.update_attributes(review_date: Time.parse("25-07-2014")) }
-          
           it { expect(card.review_date).to eq (Time.now + 2.week) }
           it { expect(card.numb_correct_answers).to eq 4 }
           it { expect(card.numb_incorrect_answers).to eq 0 }
