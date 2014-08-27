@@ -103,6 +103,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    levenshtein (0.2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -238,6 +239,7 @@ DEPENDENCIES
   fog (~> 1.23.0)
   jbuilder (~> 1.2)
   jquery-rails
+  levenshtein (~> 0.2.2)
   pg
   poltergeist (~> 1.5.1)
   pry-debugger (~> 0.2.3)

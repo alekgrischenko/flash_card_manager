@@ -12,7 +12,7 @@ class Card < ActiveRecord::Base
   before_create :set_default_review_date
 
   def check(translation)
-    if translation == translated_text 
+    if Levenshtein.distance(translated_text, translation) <= 3 
       process_correct_answer
       return true
     else
