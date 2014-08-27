@@ -34,6 +34,7 @@ class Card < ActiveRecord::Base
   def process_incorrect_answer
     if numb_incorrect_answers < 3
       increment(:numb_incorrect_answers)
+      save
     else
       decrement(:numb_correct_answers) if numb_correct_answers > 0
       update_attribute(:numb_incorrect_answers, 0)

@@ -60,16 +60,34 @@ describe "Static page" do
 
           describe "when input translation" do
 
-            it "message when translate wrong" do
-              fill_in 'translation', with: ""
-              click_button "Проверка"
-              expect(page).to have_content "Не правильно"
+            describe "and translate right" do
+
+             before(:each) do
+                fill_in 'translation', with: "текст"
+                click_button "Проверка"
+              end
+
+              it { expect(page).to have_content "Правильно" }
+
+              it "change numb_correct_answers" do
+                card.reload 
+                expect(card.numb_correct_answers).to eq 1 
+              end
             end
-           
-            it "message when translate right" do
-              fill_in 'translation', with: "текст"
-              click_button "Проверка"
-              expect(page).to have_content "Правильно"
+
+            describe "and translate wrong" do
+
+             before(:each) do
+                fill_in 'translation', with: ""
+                click_button "Проверка"
+              end
+
+              it { expect(page).to have_content "Не правильно" }
+
+              it "change numb_incorrect_answers" do
+                card.reload 
+                expect(card.numb_incorrect_answers).to eq 1 
+              end
             end
           end
         end
