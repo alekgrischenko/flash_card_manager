@@ -1,7 +1,0 @@
-<div><%= image_tag @card.image_url if @card.image? %></div>
-<span class="original-text">
-  <%= @card.original_text %>
-</span>
-<div>Правильный вариант: <%= @card.translated_text %></div>
-<div>Ваш ответ: <%= params[:translation] %></div>
-<%= link_to "Дальше", root_path %>

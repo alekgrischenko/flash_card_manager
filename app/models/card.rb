@@ -17,7 +17,6 @@ class Card < ActiveRecord::Base
       process_correct_answer
       return 1
     when 1..3
-      process_correct_answer
       return 2
     else
       process_incorrect_answer
