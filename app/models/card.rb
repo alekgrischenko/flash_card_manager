@@ -15,12 +15,12 @@ class Card < ActiveRecord::Base
     case Levenshtein.distance(translated_text, translation) 
     when 0
       process_correct_answer
-      return 1
+      return :success
     when 1..3
-      return 2
+      return :typo
     else
       process_incorrect_answer
-      return 3
+      return :error
     end
   end
 

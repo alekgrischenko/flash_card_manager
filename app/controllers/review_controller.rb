@@ -3,14 +3,14 @@ class ReviewController < ApplicationController
   def check_translation
     @card = Card.find(params[:card_id])
     case @card.check(params[:translation]) 
-    when 1
+    when :success
       flash[:success] = "Верно"
       redirect_to root_path
-    when 2
+    when :typo
       if session[:typo_count] < 3
         flash[:notice] = "Вы допустили опечатку"
-        render "static_pages/index"
         session[:typo_count] += 1
+        render "static_pages/index"
       else 
         flash[:danger] = "Вы допустили опечатку более 3 раз"
         session[:typo_count] = 0

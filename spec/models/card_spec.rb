@@ -6,15 +6,15 @@ describe Card do
 
   describe "check translation" do
     it "should check wrong translation" do
-      expect(@card.check("что-то")).to eq 3
+      expect(@card.check("что-то")).to eq :error
     end
 
     it "should check right translation" do
-      expect(@card.check("текст")).to eq 1
+      expect(@card.check("текст")).to eq :success
     end
 
     it "should check translation with typo" do
-      expect(@card.check("текстт")).to eq 2
+      expect(@card.check("текстт")).to eq :typo
     end
   end
 
