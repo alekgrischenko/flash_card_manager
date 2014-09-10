@@ -25,6 +25,8 @@ class ReviewController < ApplicationController
     end
   end
 
+  private
+  
   def reset_typo_count
     session[:typo_count] = 0
   end
