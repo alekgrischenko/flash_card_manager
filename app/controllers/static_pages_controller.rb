@@ -3,7 +3,9 @@ class StaticPagesController < ApplicationController
 
   def index
     if current_user
-      if current_user.cards.first
+      if params[:card_id]
+        @card = Card.find(params[:card_id])
+      elsif current_user.cards.first
         @card = current_user.pending_cards.first
       elsif current_user.decks.empty?
         redirect_to :new_deck, notice: 'Необходимо создать колоду и добавить туда карточки.'

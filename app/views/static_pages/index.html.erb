@@ -5,6 +5,7 @@
   <h1 class="deck-title">
     <%= current_user.current_deck.title if current_user.current_deck_id %>
   </h1>
+  <%= session[:typo_count] %>
   <div><%= image_tag @card.image_url if @card.image? %></div>
   <span class="original-text">
     <%= @card.original_text %>
