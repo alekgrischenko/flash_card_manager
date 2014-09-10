@@ -12,12 +12,15 @@ class Card < ActiveRecord::Base
   before_create :set_default_review_date
 
   def check(translation)
-    if translation == translated_text 
+    case Levenshtein.distance(translated_text, translation) 
+    when 0
       process_correct_answer
-      return true
+      return :success
+    when 1..3
+      return :typo
     else
       process_incorrect_answer
-      return false
+      return :error
     end
   end
 
@@ -63,5 +66,5 @@ class Card < ActiveRecord::Base
   def set_default_review_date
     self.review_date = Time.now
   end
-  
+
 end

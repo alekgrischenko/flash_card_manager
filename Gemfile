@@ -14,6 +14,7 @@ gem 'sorcery', '~> 0.8.6'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.3'
 gem 'fog', '~> 1.23.0'
+gem 'levenshtein', '~> 0.2.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'

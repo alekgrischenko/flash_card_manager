@@ -67,7 +67,7 @@ describe "Static page" do
                 click_button "Проверка"
               end
 
-              it { expect(page).to have_content "Правильно" }
+              it { expect(page).to have_content "Верно" }
 
               it "change numb_correct_answers" do
                 card.reload 
