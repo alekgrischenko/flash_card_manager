@@ -3,7 +3,8 @@ class ReviewController < ApplicationController
   def check_translation
     @card = current_user.cards.find(params[:card_id])
     reset_typo_count if !session[:typo_count]
-    case @card.check(params[:translation]) 
+    time_factor = (@card.translated_text.length * 1000.0) / (params[:time].to_i)
+    case @card.check(params[:translation], session[:typo_count], time_factor) 
     when :success
       flash[:success] = "Верно"
       reset_typo_count
@@ -16,6 +17,7 @@ class ReviewController < ApplicationController
       else 
         flash[:danger] = "Вы допустили опечатку более 3 раз"
         reset_typo_count
+        @card.process_incorrect_answer
         redirect_to root_path
       end
     else 
