@@ -12,7 +12,9 @@ class Card < ActiveRecord::Base
   before_create :set_default_review_date
 
   def check(translation, typo_count, time)
+    
     time_factor = translated_text.length * 1000.0 / time.to_i
+    
     case Levenshtein.distance(translated_text, translation) 
     when 0
       process_correct_answer(typo_count, time_factor)
@@ -40,9 +42,9 @@ class Card < ActiveRecord::Base
   end
 
   def update_card_attributes(typo_count, time_factor)
-    supermemo = SuperMemo.new(interval, ef, numb_correct_answers)
-    new_ef = supermemo.e_factor(typo_count, time_factor)
-    new_interval = supermemo.interval(typo_count, time_factor)
+    supermemo = SuperMemo.new(interval, ef, typo_count, time_factor, numb_correct_answers)
+    new_ef = supermemo.e_factor
+    new_interval = supermemo.interval
     new_review_date = Time.now + new_interval.day
     update_attributes(ef: new_ef, interval: new_interval, review_date: new_review_date, numb_incorrect_answers: 0) 
   end  
