@@ -1,4 +1,4 @@
-class SuperMemo < Struct.new(:interval, :ef, :numb_correct_answers)
+class SuperMemo < Struct.new(:old_interval, :ef, :numb_correct_answers)
 
   def quality_answer(typo_count, time_factor)
     case typo_count
@@ -13,16 +13,16 @@ class SuperMemo < Struct.new(:interval, :ef, :numb_correct_answers)
     end
   end
 
-  def calculate_e_factor(typo_count, time_factor)
-    e_factor = ef - (0.02 * quality_answer(typo_count, time_factor)**2 - 0.28 * quality_answer(typo_count, time_factor) + 0.8) * time_factor
-    if e_factor > 1.3 
-      e_factor 
+  def e_factor(typo_count, time_factor)
+    if typo_count <= 1
+      e_factor = ef - (0.02 * quality_answer(typo_count, time_factor)**2 - 0.28 * quality_answer(typo_count, time_factor) + 0.8) * time_factor
     else 
-      1.3
+      e_factor = ef
     end
+    e_factor > 1.3 ? e_factor : 1.3
   end
 
-  def calculate_new_interval(typo_count, time_factor)
+  def interval(typo_count, time_factor)
     if typo_count <= 1
       case numb_correct_answers
       when 0..1
@@ -30,12 +30,10 @@ class SuperMemo < Struct.new(:interval, :ef, :numb_correct_answers)
       when 2
         6
       else
-        interval * ef < 365 ? interval * ef : 365
+        old_interval * e_factor(typo_count, time_factor) < 365 ? old_interval * e_factor(typo_count, time_factor) : 365
       end
-    elsif interval/ef > 1 
-      interval/ef 
-    else
-      1
+    else 
+      old_interval/ef > 1 ? old_interval/ef : 1
     end
   end
 

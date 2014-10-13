@@ -3,5 +3,3 @@ $('.static_pages.index').ready ->
   $('form').submit ->
     delta = new Date() - start_time
     $('input[name="time"]').val(delta)
-
-

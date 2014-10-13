@@ -3,8 +3,7 @@ class ReviewController < ApplicationController
   def check_translation
     @card = current_user.cards.find(params[:card_id])
     reset_typo_count if !session[:typo_count]
-    time_factor = (@card.translated_text.length * 1000.0) / (params[:time].to_i)
-    case @card.check(params[:translation], session[:typo_count], time_factor) 
+    case @card.check(params[:translation], session[:typo_count], params[:time]) 
     when :success
       flash[:success] = "Верно"
       reset_typo_count
