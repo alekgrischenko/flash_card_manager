@@ -13,6 +13,7 @@
     <%= label_tag        :translation, "Введите перевод:" %>
     <%= text_field_tag   :translation %>
     <%= hidden_field_tag :card_id, @card.id %>
+    <%= hidden_field_tag :time, '' %>
     <%= submit_tag "Проверка" %>
   <% end %> 
 <% elsif current_user %>

@@ -11,27 +11,22 @@ class Card < ActiveRecord::Base
 
   before_create :set_default_review_date
 
-  def check(translation)
+  def check(translation, typo_count, time)
     case Levenshtein.distance(translated_text, translation) 
     when 0
-      process_correct_answer
-      return :success
+      process_correct_answer(typo_count, time)
+      :success
     when 1..3
-      return :typo
+      :typo
     else
       process_incorrect_answer
-      return :error
+      :error
     end
   end
 
-  def update_review_date
-    update_attribute(:review_date, calc_time_till_review)
-  end
-
-  def process_correct_answer
+  def process_correct_answer(typo_count, time)
     increment(:numb_correct_answers)
-    update_attribute(:numb_incorrect_answers, 0)
-    update_review_date
+    renew_attributes(typo_count, time)
   end
 
   def process_incorrect_answer
@@ -39,28 +34,20 @@ class Card < ActiveRecord::Base
       increment(:numb_incorrect_answers)
       save
     else
-      decrement(:numb_correct_answers) if numb_correct_answers > 0
-      update_attribute(:numb_incorrect_answers, 0)
-      update_review_date
+      reset_attributes
     end
   end
 
-  def calc_time_till_review
-    case numb_correct_answers
-    when 0 
-      Time.now
-    when 1
-      Time.now + 12.hour
-    when 2
-      Time.now + 3.day
-    when 3
-      Time.now + 1.week 
-    when 4
-      Time.now + 2.week 
-    else
-      update_attribute(:numb_correct_answers, 5)
-      Time.now + 1.month
-    end
+  def renew_attributes(typo_count, time)
+    supermemo = SuperMemo.new(interval, ef, typo_count, time, translated_text.length, numb_correct_answers)
+    new_ef = supermemo.e_factor
+    new_interval = supermemo.interval
+    new_review_date = Time.now + new_interval.day
+    update_attributes(ef: new_ef, interval: new_interval, review_date: new_review_date, numb_incorrect_answers: 0) 
+  end  
+  
+  def reset_attributes
+    update_attributes(numb_correct_answers: 0, numb_incorrect_answers: 0, ef: 1.3, interval: 1, review_date: Time.now)
   end
 
   def set_default_review_date
