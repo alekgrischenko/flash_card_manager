@@ -6,8 +6,8 @@ describe Card do
 
   describe "check translation" do
     before(:each) do
-      @typo_count = rand(0..3)
-      @time_factor = rand(0...2.0) 
+      @typo_count = 1
+      @time_factor = 0.7
     end
 
     it "should check wrong translation" do

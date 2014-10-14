@@ -12,12 +12,9 @@ class Card < ActiveRecord::Base
   before_create :set_default_review_date
 
   def check(translation, typo_count, time)
-    
-    time_factor = translated_text.length * 1000.0 / time.to_i
-    
     case Levenshtein.distance(translated_text, translation) 
     when 0
-      process_correct_answer(typo_count, time_factor)
+      process_correct_answer(typo_count, time)
       :success
     when 1..3
       :typo
@@ -27,9 +24,9 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def process_correct_answer(typo_count, time_factor)
+  def process_correct_answer(typo_count, time)
     increment(:numb_correct_answers)
-    update_card_attributes(typo_count, time_factor)
+    renew_attributes(typo_count, time)
   end
 
   def process_incorrect_answer
@@ -37,19 +34,19 @@ class Card < ActiveRecord::Base
       increment(:numb_incorrect_answers)
       save
     else
-      reset_card_attributes
+      reset_attributes
     end
   end
 
-  def update_card_attributes(typo_count, time_factor)
-    supermemo = SuperMemo.new(interval, ef, typo_count, time_factor, numb_correct_answers)
+  def renew_attributes(typo_count, time)
+    supermemo = SuperMemo.new(interval, ef, typo_count, time, translated_text.length, numb_correct_answers)
     new_ef = supermemo.e_factor
     new_interval = supermemo.interval
     new_review_date = Time.now + new_interval.day
     update_attributes(ef: new_ef, interval: new_interval, review_date: new_review_date, numb_incorrect_answers: 0) 
   end  
   
-  def reset_card_attributes
+  def reset_attributes
     update_attributes(numb_correct_answers: 0, numb_incorrect_answers: 0, ef: 1.3, interval: 1, review_date: Time.now)
   end
 

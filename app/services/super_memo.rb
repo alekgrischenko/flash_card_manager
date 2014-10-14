@@ -1,4 +1,4 @@
-class SuperMemo < Struct.new(:previous_interval, :ef, :typo_count, :time_factor, :numb_correct_answers)
+class SuperMemo < Struct.new(:previous_interval, :ef, :typo_count, :time, :translated_text_length, :numb_correct_answers)
 
 =begin
 Градация качества ответа
@@ -33,11 +33,7 @@ class SuperMemo < Struct.new(:previous_interval, :ef, :typo_count, :time_factor,
 =end
 
   def e_factor
-    result = if typo_count <= 1
-              calculate_e_factor
-            else 
-              ef
-            end
+    result = typo_count <= 1 ? calculate_e_factor : ef
     [result, 1.3].max
   end
 
@@ -63,6 +59,10 @@ class SuperMemo < Struct.new(:previous_interval, :ef, :typo_count, :time_factor,
     # Эта формула взята тут http://www.supermemo.com/english/ol/sm2.htm и немного доработана, 
     # чтобы учитывать при расчете время ответа юзера 
     ef - (0.02 * qualify_answer**2 - 0.28 * qualify_answer + 0.8) * time_factor 
+  end
+
+  def time_factor
+    translated_text_length * 1000.0 / time.to_i
   end
 
 end
