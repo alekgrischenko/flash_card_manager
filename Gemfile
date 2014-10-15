@@ -16,7 +16,7 @@ gem 'levenshtein', '~> 0.2.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
-  gem 'pry-debugger', '~> 0.2.3'
+  gem 'pry-byebug', '~> 2.0.0'
 end
 
 group :test do
