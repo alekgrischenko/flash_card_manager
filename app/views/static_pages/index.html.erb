@@ -1,23 +1,6 @@
 <p class="big-font">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
-<% if @card %>
-  <h1 class="deck-title">
-    <%= current_user.current_deck.title if current_user.current_deck_id %>
-  </h1>
-  <div><%= image_tag @card.image_url if @card.image? %></div>
-  <span class="original-text">
-    <%= @card.original_text %>
-  </span>
-  <%= form_tag check_translation_path, method: :put do %>
-    <%= label_tag        :translation, "Введите перевод:" %>
-    <%= text_field_tag   :translation %>
-    <%= hidden_field_tag :card_id, @card.id %>
-    <%= hidden_field_tag :time, '' %>
-    <%= submit_tag "Проверка" %>
-  <% end %> 
-<% elsif current_user %>
-  <div class="alert alert-warning">
-    На сегодня все карточки закончились. Приходите завтра.
-  </div>
-<% end %>
+<div class="class_review">
+  <%= render 'card_review' %>
+</div>
