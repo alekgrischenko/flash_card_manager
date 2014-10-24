@@ -8,7 +8,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'simple_form', '~> 3.0.2'
-gem 'pry-debugger', '~> 0.2.3'
 gem 'sorcery', '~> 0.8.6'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.3'
@@ -17,6 +16,7 @@ gem 'levenshtein', '~> 0.2.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
+  gem 'pry-byebug', '~> 2.0.0'
 end
 
 group :test do

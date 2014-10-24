@@ -12,6 +12,16 @@ class StaticPagesController < ApplicationController
     else
       redirect_to :decks, notice: 'Необходимо добавить карточки в колоду.'
     end
+
+    Rails.logger.warn "PASSED ALL CHECKS";
+    respond_to do |format|
+      format.js {
+        Rails.logger.warn params.inspect
+        render_to_string(partials: "card_review", formats: :html, layout: false)
+               }
+      format.html { Rails.logger.warn "RENDERING HTML"; }
+    end
+
   end
 
   def current_user?
@@ -20,6 +30,6 @@ class StaticPagesController < ApplicationController
       redirect_to new_user_path
     end
   end
-  
+
 end
- 
+
