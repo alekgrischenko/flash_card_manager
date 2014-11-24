@@ -7,13 +7,14 @@
     <th></th>
   </tr>
   <% @deck.cards.each do |card| %>
+  <div>Привет</div>
     <tr>
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date.try(:strftime, "%d/%m/%Y") %></td>
       <td><%= image_tag card.image_url(:thumb) if card.image? %></td>
       <td>
-        <%= link_to "Показать", card_path(card) %><br><%= link_to "Редактировать", edit_card_path(card) %> / 
+        <%= link_to "Показать", card_path(card) %><br><%= link_to "Редактировать", edit_card_path(card) %> /
         <%= link_to "Удалить", card_path(card), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить безвозвратно эту флэш-карточку?' }  %>
       </td>
     </tr>

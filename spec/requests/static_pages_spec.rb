@@ -19,7 +19,7 @@ describe "Static page" do
         sign_in user
         visit root_path
       end
-      
+
       it { expect(page).to have_link("Редактировать", href: edit_user_path(user.id)) }
       it { expect(page).to have_link("Выйти",         href: logout_path) }
       it { expect(page).to have_link("Колоды",        href: decks_path) }
@@ -31,11 +31,11 @@ describe "Static page" do
 
       describe "and user have decks but not have cards" do
         let!(:deck) { FactoryGirl.create(:deck, user_id: user.id) }
-        
+
         before(:each) do
           visit root_path
         end
-      
+
         it { expect(page).to have_content "Необходимо добавить карточки в колоду." }
 
         describe "user have decks and cards and review date more then today" do
@@ -45,7 +45,7 @@ describe "Static page" do
             card.update_attributes(review_date: (Time.now + 1.day))
             visit root_path
           end
-        
+
           it { expect(page).to have_content "На сегодня все карточки закончились. Приходите завтра." }
         end
 
@@ -55,7 +55,7 @@ describe "Static page" do
           before(:each) do
             visit root_path
           end
-        
+
           it { expect(page).to have_content card.original_text }
 
           describe "when input translation" do
@@ -70,8 +70,8 @@ describe "Static page" do
               it { expect(page).to have_content "Верно" }
 
               it "change numb_correct_answers" do
-                card.reload 
-                expect(card.numb_correct_answers).to eq 1 
+                card.reload
+                expect(card.numb_correct_answers).to eq 1
               end
             end
 
@@ -85,8 +85,8 @@ describe "Static page" do
               it { expect(page).to have_content "Не правильно" }
 
               it "change numb_incorrect_answers" do
-                card.reload 
-                expect(card.numb_incorrect_answers).to eq 1 
+                card.reload
+                expect(card.numb_incorrect_answers).to eq 1
               end
             end
           end
@@ -96,7 +96,7 @@ describe "Static page" do
 
     describe "when user login and have several decks and cards" do
       let(:user) { FactoryGirl.create(:user) }
-      
+
       before(:each) do
         sign_in user
         5.times { FactoryGirl.create(:deck_with_cards) }
