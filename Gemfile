@@ -17,6 +17,8 @@ gem 'levenshtein', '~> 0.2.2'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
   gem 'pry-byebug', '~> 2.0.0'
+  gem 'guard-rspec', '~> 4.3.1'
+  gem 'guard-livereload', '~> 2.4.0'
 end
 
 group :test do
