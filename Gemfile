@@ -19,6 +19,7 @@ group :development, :test do
   gem 'pry-byebug', '~> 2.0.0'
   gem 'guard-rspec', '~> 4.3.1'
   gem 'guard-livereload', '~> 2.4.0'
+  gem 'dotenv-rails', '~> 1.0.2'
 end
 
 group :test do

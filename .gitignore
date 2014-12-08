@@ -19,6 +19,7 @@
 *.sublime-workspace
 .rake_tasks~
 .idea/
+.env
 
 /config/database.yml
 /public/uploads
