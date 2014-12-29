@@ -14,5 +14,4 @@ script:
 
 before_script:
   - psql -c 'create database flash_card_mаnаger_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
 
