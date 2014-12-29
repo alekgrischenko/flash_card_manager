@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  port: 5432
+
+development:
+  <<: *default
+  database: flash_card_mаnаger_development
+  username: <%= ENV['USER'] %>
+  password: <%= ENV['PASSWORD'] %>
+
+test:
+  <<: *default
+  database: flash_card_mаnаger_test
+  username: postgres
+
+production:
+  <<: *default
+  database: flash_card_mаnаger_production

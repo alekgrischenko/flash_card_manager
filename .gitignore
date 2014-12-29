@@ -21,7 +21,6 @@
 .idea/
 .env
 
-/config/database.yml
 /public/uploads
 /public/assets
 /public/system
